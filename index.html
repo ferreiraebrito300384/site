@@ -3,132 +3,439 @@
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ferreira e Brito Armazéns Gerais - Armazenamento logístico de grãos e fertilizantes em Camaçari-BA">
-    <title>Ferreira e Brito Armazéns Gerais | Armazenagem Logística | Camaçari-BA</title>
-    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Ferreira e Brito Armazéns Gerais - Excelência no armazenamento logístico de grãos e fertilizantes em Camaçari-BA">
+    <title>Ferreira e Brito Armazéns Gerais | Logística de Alta Performance</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* RESET E VARIÁVEIS */
+        :root {
+            --primary: #10b981; /* Verde Agro */
+            --primary-dark: #059669;
+            --secondary: #f59e0b; /* Amarelo/Dourado Grãos */
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --glass-bg: rgba(15, 23, 42, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--light);
+            background: linear-gradient(-45deg, #020617, #064e3b, #0f172a, #022c22);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+
+        a { text-decoration: none; color: inherit; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* TICKER / FAIXA DE COTAÇÕES */
+        .ticker-wrap {
+            width: 100%;
+            background-color: #000;
+            color: var(--primary);
+            padding: 8px 0;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            position: fixed;
+            top: 0;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+        }
+        .ticker {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: ticker 30s linear infinite;
+        }
+        .ticker-item { margin-right: 50px; }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        /* HEADER GLASSMORPHISM */
+        .header {
+            position: fixed;
+            top: 35px; /* Abaixo do ticker */
+            width: 100%;
+            padding: 20px 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 1.5rem; font-weight: 900; color: #fff; letter-spacing: 1px; }
+        .logo span { color: var(--primary); }
+        .nav-menu { display: flex; gap: 30px; list-style: none; }
+        .nav-menu a { font-weight: 500; transition: color 0.3s; text-transform: uppercase; font-size: 0.9rem;}
+        .nav-menu a:hover { color: var(--primary); }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        .btn-portal {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-left: 20px;
+        }
+        .btn-portal:hover { background: var(--primary); color: #fff; box-shadow: 0 0 15px var(--primary); }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .hero h1 span {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .hero-actions { display: flex; gap: 20px; justify-content: center; }
+
+        /* SECTIONS GERAIS */
+        section { padding: 100px 0; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 15px; color: #fff; }
+        .section-header p { color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* SERVIÇOS CARDS */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+        }
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* DIFERENCIAIS / STATS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            background: linear-gradient(90deg, var(--darker), #064e3b);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 3rem; font-weight: 900; color: var(--secondary); margin-bottom: 10px; }
+        .stat-desc { font-size: 0.9rem; color: #cbd5e1; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* CARD PARCEIRO - GAC CONSULTORIA */
+        .promo-gac {
+            background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop') center/cover;
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            margin-top: 50px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+        .promo-gac::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(15,23,42,0.95) 30%, rgba(15,23,42,0.4) 100%);
+        }
+        .promo-content {
+            position: relative;
+            z-index: 1;
+            padding: 80px 60px;
+            max-width: 700px;
+        }
+        .gac-tag {
+            background: var(--secondary);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .promo-content h3 { font-size: 2.5rem; margin-bottom: 20px; color: #fff; }
+        .promo-content p { font-size: 1.1rem; color: #e2e8f0; margin-bottom: 30px; line-height: 1.6; }
+        .btn-gac {
+            display: inline-flex;
+            align-items: center;
+            background: #fff;
+            color: #0f172a;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 800;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .btn-gac:hover { background: var(--secondary); transform: scale(1.05); }
+
+        /* FOOTER */
+        .footer {
+            background: var(--darker);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ANIMAÇÕES DE SCROLL */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .nav-menu { display: none; } /* Necessário adicionar menu hambúrguer no JS depois */
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .promo-content { padding: 40px 20px; }
+        }
+    </style>
 </head>
 <body>
+
+    <div class="ticker-wrap">
+        <div class="ticker" id="ticker-content">
+            <span class="ticker-item">🌐 MERCADO GLOBAL & AGRO</span>
+            <span class="ticker-item" id="cot-usd">🇺🇸 USD: Carregando...</span>
+            <span class="ticker-item" id="cot-eur">🇪🇺 EUR: Carregando...</span>
+            <span class="ticker-item">🌾 SOJA (Ref): Alta Demanda</span>
+            <span class="ticker-item">🚜 FERTILIZANTES: Mercado Estável</span>
+            <span class="ticker-item">📍 FERREIRA E BRITO - CAMAÇARI/BA</span>
+        </div>
+    </div>
+
     <header class="header">
         <nav class="nav container">
             <a href="#" class="logo">
-                <img src="assets/logo.png" alt="Ferreira e Brito Armazéns Gerais">
+                Ferreira<span>&</span>Brito
             </a>
-            <div class="nav-right">
-                <ul class="nav-menu">
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#galeria">Galeria</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-                <a href="https://www.nxsistemas.com/ferreiraebrito" class="btn btn-portal" target="_blank" rel="noopener noreferrer">Acessar Portal</a>
-                <button class="nav-toggle" aria-label="Abrir menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#diferenciais">A Empresa</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#parceiro">Parceiros</a></li>
+            </ul>
+            <div style="display: flex; align-items: center;">
+                <a href="https://www.nxsistemas.com/ferreiraebrito" class="btn btn-portal" target="_blank">Acesso Restrito</a>
             </div>
         </nav>
     </header>
 
     <main>
         <section id="inicio" class="hero">
-            <div class="hero-content container animate-on-scroll">
-                <h1>Armazenagem logística com <span class="highlight">excelência</span></h1>
-                <p class="hero-subtitle">Especializados em armazenamento de grãos, com foco em fertilizantes. Recebimento, ensacamento, armazenagem e expedição com qualidade e segurança em Camaçari-BA.</p>
+            <div class="hero-content reveal">
+                <h1>A Força da sua <br><span>Logística Agrícola</span></h1>
+                <p class="hero-subtitle">Especialistas absolutos em armazenamento de grãos e fertilizantes. Infraestrutura de ponta, processos rigorosos e localização estratégica em Camaçari-BA para potencializar o seu agronegócio.</p>
                 <div class="hero-actions">
-                    <a href="#contato" class="btn btn-primary">Fale Conosco</a>
-                    <a href="#servicos" class="btn btn-secondary">Conheça Nossos Serviços</a>
-                </div>
-            </div>
-            <div class="hero-visual"></div>
-        </section>
-
-        <section id="servicos" class="services">
-            <div class="container">
-                <h2 class="animate-on-scroll">Nossos Serviços</h2>
-                <p class="section-intro animate-on-scroll">Soluções completas em armazenagem logística para grãos e fertilizantes.</p>
-                <div class="services-grid">
-                    <article class="service-card animate-on-scroll">
-                        <div class="service-icon">↓</div>
-                        <h3>Recebimento</h3>
-                        <p>Recebimento eficiente e seguro de cargas, garantindo o cuidado com seu produto desde a chegada.</p>
-                    </article>
-                    <article class="service-card animate-on-scroll">
-                        <div class="service-icon">▢</div>
-                        <h3>Ensacamento</h3>
-                        <p>Embalagem em big bags ou sacos de diversos pesos (25 kg, 50 kg) conforme sua necessidade.</p>
-                    </article>
-                    <article class="service-card animate-on-scroll">
-                        <div class="service-icon">■</div>
-                        <h3>Armazenagem</h3>
-                        <p>Armazenamento adequado de grãos e fertilizantes em ambiente controlado e seguro.</p>
-                    </article>
-                    <article class="service-card animate-on-scroll">
-                        <div class="service-icon">→</div>
-                        <h3>Expedição</h3>
-                        <p>Expedição organizada e ágil para garantir que sua carga chegue ao destino no prazo.</p>
-                    </article>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="galeria" class="gallery">
-            <div class="container">
-                <h2 class="animate-on-scroll">Nossa Estrutura</h2>
-                <p class="section-intro animate-on-scroll">Infraestrutura preparada para armazenagem de grãos e fertilizantes.</p>
-                <!-- Adicione suas imagens na pasta assets/galeria/ e atualize os src abaixo -->
-                <div class="gallery-grid">
-                    <div class="gallery-item animate-on-scroll">
-                        <img src="assets/galeria/armazem.png" alt="Armazém">
-                        <span class="gallery-caption">Armazém</span>
-                    </div>
-                    <div class="gallery-item animate-on-scroll">
-                        <img src="assets/galeria/bigbags.png" alt="Big bags">
-                        <span class="gallery-caption">Big Bags</span>
-                    </div>
-                    <div class="gallery-item animate-on-scroll">
-                        <img src="assets/galeria/fertilizantes.png" alt="Fertilizantes">
-                        <span class="gallery-caption">Fertilizantes</span>
-                    </div>
-                    <div class="gallery-item animate-on-scroll">
-                        <img src="assets/galeria/empilhadeiras.png" alt="Empilhadeiras">
-                        <span class="gallery-caption">Empilhadeiras</span>
-                    </div>
+                    <a href="#contato" class="btn btn-primary">Solicitar Cotação</a>
+                    <a href="#servicos" class="btn" style="border: 1px solid #fff;">Nossos Serviços</a>
                 </div>
             </div>
         </section>
 
-        <section id="sobre" class="about">
-            <div class="container about-grid">
-                <div class="about-content animate-on-scroll">
-                    <h2>Ferreira e Brito Armazéns Gerais</h2>
-                    <p>Somos um armazém logístico especializado em armazenamento de grãos, com grande parte de nossa operação voltada para fertilizantes. Localizados em Camaçari-BA, oferecemos uma estrutura preparada para atender com eficiência e segurança.</p>
-                    <p>Nosso compromisso é entregar qualidade em cada etapa: do recebimento ao armazenamento, do ensacamento à expedição. Trabalhamos com big bags e sacos de diversos pesos para atender às necessidades variadas de nossos clientes.</p>
-                    <p class="location"><strong>📍 Camaçari - Bahia</strong></p>
+        <section id="diferenciais" class="container reveal">
+            <div class="section-header">
+                <p>Nossa Estrutura</p>
+                <h2>Por que escolher a Ferreira e Brito?</h2>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">+15</div>
+                    <div class="stat-desc">Anos de Experiência</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-desc">Segurança Carga</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24h</div>
+                    <div class="stat-desc">Monitoramento</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">+50k</div>
+                    <div class="stat-desc">Ton. Movimentadas</div>
                 </div>
             </div>
         </section>
 
-        <section id="contato" class="contact">
-            <div class="container">
-                <h2 class="animate-on-scroll">Entre em Contato</h2>
-                <p class="section-intro animate-on-scroll">Estamos prontos para atender sua demanda. Entre em contato e solicite um orçamento.</p>
-                <a href="mailto:contato.geral@ferreiraebrito.com" class="contact-email">
-                    contato.geral@ferreiraebrito.com
-                </a>
+        <section id="servicos" class="container reveal">
+            <div class="section-header">
+                <p>Soluções Completas</p>
+                <h2>Excelência em cada etapa</h2>
+            </div>
+            <div class="services-grid">
+                <article class="service-card">
+                    <div class="service-icon">📥</div>
+                    <h3>Recebimento</h3>
+                    <p>Processo de triagem e recebimento de alta eficiência, minimizando o tempo de espera dos caminhões e garantindo a integridade do produto.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">🏭</div>
+                    <h3>Armazenagem</h3>
+                    <p>Galpões modernos e climatizados especificamente para suportar grandes volumes de fertilizantes sem perda de qualidade química.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">📦</div>
+                    <h3>Ensacamento</h3>
+                    <p>Linha de produção ágil para envase em Big Bags de 1 tonelada ou sacarias menores (25kg/50kg) conforme a demanda do cliente final.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">🚛</div>
+                    <h3>Expedição</h3>
+                    <p>Logística de saída otimizada. Carregamento rápido e seguro, garantindo que sua carga chegue às lavouras no tempo exato do plantio.</p>
+                </article>
             </div>
         </section>
+
+        <section id="parceiro" class="container reveal">
+            <div class="promo-gac">
+                <div class="promo-content">
+                    <span class="gac-tag">Recomendação Estratégica</span>
+                    <h3>Evolua a Gestão do seu Negócio com a GAC Consultoria</h3>
+                    <p>A logística é apenas uma parte do sucesso. Para garantir a rentabilidade estrutural e a governança corporativa da sua empresa agrícola, recomendamos nosso parceiro estratégico de confiança. A <strong>GAC Consultoria</strong> possui especialistas focados em levar seus resultados para o próximo nível.</p>
+                    <a href="https://gacconsultoria.figma.site/" target="_blank" rel="noopener noreferrer" class="btn-gac">
+                        Conhecer a GAC Consultoria ↗
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer class="footer">
-        <div class="container footer-content">
-            <p>&copy; 2025 Ferreira e Brito Armazéns Gerais. Todos os direitos reservados. Camaçari-BA</p>
+        <div class="container">
+            <h3 style="margin-bottom: 10px; color: #fff;">Ferreira e Brito Armazéns Gerais</h3>
+            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 20px;">Rodovia BA-535 - Via Parafuso, Camaçari - BA</p>
+            <p style="color: #475569; font-size: 0.8rem;">&copy; 2025 Ferreira e Brito. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // 1. Busca Cotação de Moedas Ao Vivo via API (AwesomeAPI)
+        async function buscarCotacoes() {
+            try {
+                const response = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL');
+                const data = await response.json();
+                
+                const usd = parseFloat(data.USDBRL.bid).toFixed(2).replace('.', ',');
+                const eur = parseFloat(data.EURBRL.bid).toFixed(2).replace('.', ',');
+                
+                document.getElementById('cot-usd').innerHTML = `🇺🇸 USD: R$ ${usd}`;
+                document.getElementById('cot-eur').innerHTML = `🇪🇺 EUR: R$ ${eur}`;
+            } catch (error) {
+                console.error("Erro ao buscar cotações:", error);
+                document.getElementById('cot-usd').innerHTML = `🇺🇸 USD: R$ 5,00*`;
+                document.getElementById('cot-eur').innerHTML = `🇪🇺 EUR: R$ 5,45*`;
+            }
+        }
+        buscarCotacoes();
+
+        // 2. Efeito de Animação ao Rolar a Página (Scroll Reveal)
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 100;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        // Disparar uma vez no carregamento inicial
+        revealOnScroll();
+    </script>
 </body>
 </html>
