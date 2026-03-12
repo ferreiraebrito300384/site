@@ -3,60 +3,55 @@
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ferreira e Brito Armazéns Gerais - Excelência no armazenamento logístico de grãos e fertilizantes em Camaçari-BA">
+    <meta name="description" content="Ferreira e Brito Armazéns Gerais - Excelência no armazenamento logístico de grãos e fertilizantes">
     <title>Ferreira e Brito Armazéns Gerais | Logística de Alta Performance</title>
+    
+    <link rel="icon" type="image/png" href="assets/logo.png" sizes="32x32">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
     
     <style>
         /* ==========================================
-           CORES DA LOGO
-           Troque o HEX (#...) abaixo pelas cores exatas da sua logo
+           CORES E VARIÁVEIS - TEMA CLARO
            ========================================== */
         :root {
-            --primary: #0ea5e9; /* Cor Principal (Ex: Azul da Logo) */
+            --primary: #0ea5e9; /* Azul Corporativo */
             --primary-dark: #0284c7;
-            --secondary: #f97316; /* Cor Secundária (Ex: Laranja/Amarelo da Logo) */
+            --secondary: #f97316; /* Laranja Logística */
             
-            --dark: #0f172a;
-            --darker: #020617;
-            --light: #f8fafc;
-            --glass-bg: rgba(15, 23, 42, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-dark: #0f172a; /* Texto principal escuro */
+            --text-gray: #475569; /* Texto secundário */
+            --bg-light: #f8fafc; /* Fundo claro principal */
+            
+            --glass-header: rgba(15, 23, 42, 0.95); /* Header escuro para a logo branca aparecer */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--light);
-            background: linear-gradient(-45deg, #020617, #0f172a, #1e293b, #020617);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            color: var(--text-gray);
+            background-color: var(--bg-light);
+            /* GRADE HEXAGONAL (EFEITO SUTIL DE FUNDO) */
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='103.92' viewBox='0 0 60 103.92' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 17.32L0 34.64v34.64l30 17.32 30-17.32V34.64L30 17.32zM0 103.92V69.28l30-17.32 30 17.32v34.64l-30 17.32L0 103.92zM30 51.96L0 69.28v34.64l30 17.32 30-17.32V69.28L30 51.96z' fill='%23cbd5e1' fill-opacity='0.25' fill-rule='evenodd'/%3E%3C/svg%3E");
             overflow-x: hidden;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: var(--text-dark); }
         a { text-decoration: none; color: inherit; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* TICKER / FAIXA DE COTAÇÕES (DADOS REAIS) */
+        /* TICKER / FAIXA DE COTAÇÕES AO VIVO */
         .ticker-wrap {
             width: 100%;
             background-color: #000;
             color: #fff;
-            padding: 8px 0;
+            padding: 10px 0;
             font-size: 0.85rem;
             font-weight: 600;
             white-space: nowrap;
             overflow: hidden;
-            border-bottom: 2px solid var(--primary);
+            border-bottom: 3px solid var(--primary);
             position: fixed;
             top: 0;
             z-index: 2000;
@@ -67,41 +62,41 @@
             display: inline-block;
             white-space: nowrap;
             padding-left: 100%;
-            animation: ticker 25s linear infinite;
+            animation: ticker 35s linear infinite; /* Mais lento para dar tempo de ler tudo */
         }
-        .ticker-item { margin-right: 50px; }
-        .ticker-item span { color: var(--primary); }
+        .ticker-item { margin-right: 60px; }
+        .ticker-item span.highlight { color: var(--primary); }
+        .ticker-item span.value { color: #22c55e; } /* Verde para valores */
         @keyframes ticker {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* HEADER */
+        /* HEADER (Mantido escuro para a logo branca destacar) */
         .header {
             position: fixed;
-            top: 35px;
+            top: 38px;
             width: 100%;
             padding: 15px 0;
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--glass-border);
+            background: var(--glass-header);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             z-index: 1000;
             transition: all 0.3s ease;
         }
         .nav { display: flex; justify-content: space-between; align-items: center; }
         
         .logo img {
-            max-height: 50px; /* Ajuste a altura da sua logo aqui */
+            max-height: 55px;
             width: auto;
         }
 
-        .nav-menu { display: flex; gap: 30px; list-style: none; }
-        .nav-menu a { font-weight: 500; transition: color 0.3s; text-transform: uppercase; font-size: 0.9rem;}
+        .nav-menu { display: flex; gap: 40px; list-style: none; }
+        .nav-menu a { color: #f8fafc; font-weight: 500; transition: color 0.3s; text-transform: uppercase; font-size: 0.9rem;}
         .nav-menu a:hover { color: var(--primary); }
         
         .btn {
-            padding: 12px 24px;
+            padding: 14px 28px;
             border-radius: 30px;
             font-weight: 600;
             text-transform: uppercase;
@@ -117,12 +112,12 @@
             color: var(--primary);
             margin-left: 20px;
         }
-        .btn-portal:hover { background: var(--primary); color: #fff; box-shadow: 0 0 15px var(--primary); }
+        .btn-portal:hover { background: var(--primary); color: #fff; box-shadow: 0 0 15px rgba(14,165,233,0.5); }
         
         .btn-primary {
             background: var(--primary);
             color: #fff;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
         }
         .btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); }
 
@@ -131,7 +126,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: 100px;
+            padding-top: 120px;
             position: relative;
         }
         .hero-content {
@@ -143,8 +138,8 @@
         }
         .hero h1 {
             font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
+            line-height: 1.15;
+            margin-bottom: 25px;
             text-transform: uppercase;
         }
         .hero h1 span {
@@ -153,96 +148,83 @@
             -webkit-text-fill-color: transparent;
         }
         .hero-subtitle {
-            font-size: 1.2rem;
-            color: #cbd5e1;
-            margin-bottom: 40px;
-            line-height: 1.6;
+            font-size: 1.25rem;
+            margin-bottom: 50px;
+            line-height: 1.7;
         }
         .hero-actions { display: flex; gap: 20px; justify-content: center; }
+        .btn-outline-dark { border: 2px solid var(--text-dark); color: var(--text-dark); }
+        .btn-outline-dark:hover { background: var(--text-dark); color: #fff; }
 
-        /* SECTIONS GERAIS */
-        section { padding: 100px 0; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 2.5rem; margin-bottom: 15px; color: #fff; }
-        .section-header p { color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+        /* SECTIONS GERAIS (Mais Espaçamento) */
+        section { padding: 150px 0; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: 2.8rem; margin-bottom: 15px; }
+        .section-header p { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* DIFERENCIAIS / STATS */
+        /* DIFERENCIAIS / STATS (Design Claro) */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            background: linear-gradient(90deg, rgba(15,23,42,0.8), rgba(30,41,59,0.8));
-            padding: 50px;
+            gap: 30px;
+            background: #ffffff;
+            padding: 60px;
             border-radius: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
+            border: 1px solid #e2e8f0;
         }
         .stat-item { text-align: center; }
-        .stat-number { font-size: 3rem; font-weight: 900; color: var(--secondary); margin-bottom: 10px; }
-        .stat-desc { font-size: 0.9rem; color: #cbd5e1; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-number { font-size: 3.5rem; font-weight: 900; color: var(--primary); margin-bottom: 10px; }
+        .stat-desc { font-size: 0.95rem; color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 
         /* SERVIÇOS CARDS */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 40px; /* Mais espaço entre os cards */
         }
         .service-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            padding: 40px 30px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 50px 40px;
             border-radius: 20px;
             text-align: center;
-            backdrop-filter: blur(10px);
             transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.03);
         }
         .service-card:hover {
             transform: translateY(-10px);
             border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.1);
         }
+        .service-card h3 { margin-bottom: 15px; }
+        .service-card p { line-height: 1.6; }
         .service-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            margin-bottom: 25px;
         }
 
-        /* GALERIA */
+        /* GALERIA (Sem texto e com mais espaço) */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px; /* Aumentado o espaço entre as fotos */
         }
         .gallery-item {
             position: relative;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            border: 1px solid var(--glass-border);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             aspect-ratio: 4/3;
         }
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
         .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0,0,0,0.7);
-            padding: 15px;
-            text-align: center;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
+            transform: scale(1.1); /* Efeito suave ao passar o mouse */
         }
 
         /* CARD PARCEIRO - GAC CONSULTORIA */
@@ -251,7 +233,7 @@
             position: relative;
             border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2);
         }
         .promo-gac::before {
             content: '';
@@ -262,28 +244,28 @@
         .promo-content {
             position: relative;
             z-index: 1;
-            padding: 80px 60px;
-            max-width: 700px;
+            padding: 100px 80px;
+            max-width: 800px;
         }
         .gac-tag {
             background: #ef4444; /* Vermelho alerta */
             color: #fff;
-            padding: 5px 15px;
+            padding: 8px 20px;
             border-radius: 20px;
             font-weight: 800;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
-        .promo-content h3 { font-size: 2.2rem; margin-bottom: 20px; color: #fff; }
-        .promo-content p { font-size: 1.1rem; color: #e2e8f0; margin-bottom: 30px; line-height: 1.6; }
+        .promo-content h3 { font-size: 2.5rem; margin-bottom: 25px; color: #fff; }
+        .promo-content p { font-size: 1.15rem; color: #e2e8f0; margin-bottom: 40px; line-height: 1.7; }
         .btn-gac {
             display: inline-flex;
             align-items: center;
             background: #fff;
             color: #0f172a;
-            padding: 15px 30px;
+            padding: 18px 36px;
             border-radius: 30px;
             font-weight: 800;
             text-transform: uppercase;
@@ -291,24 +273,25 @@
         }
         .btn-gac:hover { background: var(--secondary); color: #fff; transform: scale(1.05); }
 
-        /* FOOTER */
+        /* FOOTER LIMPADO */
         .footer {
-            background: var(--darker);
-            padding: 40px 0;
+            background: var(--text-dark);
+            padding: 50px 0;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #fff;
         }
 
         /* ANIMAÇÕES DE SCROLL */
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal { opacity: 0; transform: translateY(60px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* RESPONSIVO */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.8rem; }
             .nav-menu { display: none; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .promo-content { padding: 40px 20px; }
+            section { padding: 100px 0; }
+            .stats-grid { grid-template-columns: 1fr 1fr; padding: 30px; gap: 20px; }
+            .promo-content { padding: 50px 30px; }
             .hero-actions { flex-direction: column; }
         }
     </style>
@@ -317,18 +300,20 @@
 
     <div class="ticker-wrap">
         <div class="ticker" id="ticker-content">
-            <span class="ticker-item">📊 <span>MERCADO AO VIVO</span></span>
-            <span class="ticker-item" id="cot-usd">🇺🇸 USD: Carregando...</span>
-            <span class="ticker-item" id="cot-eur">🇪🇺 EUR: Carregando...</span>
-            <span class="ticker-item" id="cot-btc">₿ BTC: Carregando...</span>
-            <span class="ticker-item">📍 FERREIRA E BRITO ARMAZÉNS GERAIS</span>
+            <span class="ticker-item"><span class="highlight">📊 MERCADO AO VIVO</span></span>
+            <span class="ticker-item" id="cot-usd">🇺🇸 USD: Aguardando...</span>
+            <span class="ticker-item" id="cot-eur">🇪🇺 EUR: Aguardando...</span>
+            <span class="ticker-item" id="cot-btc">₿ BTC: Aguardando...</span>
+            <span class="ticker-item" id="cot-ibov">📈 IBOVESPA: Aguardando...</span>
+            <span class="ticker-item" id="cot-nasdaq">📉 NASDAQ: Aguardando...</span>
+            <span class="ticker-item"><span class="highlight">📍 FERREIRA E BRITO ARMAZÉNS GERAIS</span></span>
         </div>
     </div>
 
     <header class="header">
         <nav class="nav container">
             <a href="#" class="logo">
-                <img src="assets/logo.png" alt="Ferreira e Brito Armazéns Gerais">
+                <img src="assets/logo fb sem fundo.jpeg" alt="Ferreira e Brito Armazéns Gerais">
             </a>
             
             <ul class="nav-menu">
@@ -347,10 +332,10 @@
         <section id="inicio" class="hero">
             <div class="hero-content reveal">
                 <h1>A Força da sua <br><span>Logística e Armazenagem</span></h1>
-                <p class="hero-subtitle">Especialistas absolutos em armazenamento de grãos e fertilizantes. Infraestrutura de ponta, processos rigorosos e localização estratégica em Camaçari-BA para potencializar o seu negócio.</p>
+                <p class="hero-subtitle">Especialistas absolutos em armazenamento de grãos e fertilizantes. Infraestrutura de ponta e processos rigorosos para potencializar o seu negócio.</p>
                 <div class="hero-actions">
                     <a href="mailto:jamilson.silva@ferreiraebrito.com" class="btn btn-primary">Solicitar Orçamento</a>
-                    <a href="#servicos" class="btn" style="border: 1px solid #fff;">Nossos Serviços</a>
+                    <a href="#servicos" class="btn btn-outline-dark">Nossos Serviços</a>
                 </div>
             </div>
         </section>
@@ -395,7 +380,7 @@
                 <article class="service-card">
                     <div class="service-icon">🏭</div>
                     <h3>Armazenagem</h3>
-                    <p>Estrutura preparada para suportar grandes volumes de fertilizantes. Garantimos a integridade total do seu produto: entregamos exatamente o que recebemos, sem perda de qualidade ou volume.</p>
+                    <p>Estrutura preparada para suportar grandes volumes de fertilizantes. Garantimos a integridade total do seu produto: entregamos exatamente o que recebemos.</p>
                 </article>
                 <article class="service-card">
                     <div class="service-icon">📦</div>
@@ -405,7 +390,7 @@
                 <article class="service-card">
                     <div class="service-icon">🚛</div>
                     <h3>Expedição</h3>
-                    <p>Logística de saída otimizada. Carregamento rápido e seguro, garantindo que sua carga chegue ao destino do cliente final com total pontualidade.</p>
+                    <p>Logística de saída otimizada. Carregamento rápido e seguro, garantindo que sua carga chegue ao destino do cliente com total pontualidade.</p>
                 </article>
             </div>
         </section>
@@ -418,19 +403,15 @@
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <img src="assets/galeria/armazem.png" alt="Armazém Ferreira e Brito">
-                    <span class="gallery-caption">Armazém</span>
                 </div>
                 <div class="gallery-item">
                     <img src="assets/galeria/bigbags.png" alt="Big bags">
-                    <span class="gallery-caption">Área de Big Bags</span>
                 </div>
                 <div class="gallery-item">
                     <img src="assets/galeria/fertilizantes.png" alt="Fertilizantes">
-                    <span class="gallery-caption">Estoque de Fertilizantes</span>
                 </div>
                 <div class="gallery-item">
                     <img src="assets/galeria/empilhadeiras.png" alt="Empilhadeiras em operação">
-                    <span class="gallery-caption">Maquinário e Movimentação</span>
                 </div>
             </div>
         </section>
@@ -453,41 +434,54 @@
     <footer class="footer">
         <div class="container">
             <h3 style="margin-bottom: 10px; color: #fff;">Ferreira e Brito Armazéns Gerais</h3>
-            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 20px;">Rodovia BA-535 - Via Parafuso, Camaçari - BA</p>
-            <p style="color: #475569; font-size: 0.8rem;">&copy; 2026 Ferreira e Brito. Todos os direitos reservados.</p>
+            <p style="color: #cbd5e1; font-size: 0.85rem;">&copy; 2026 Ferreira e Brito. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <script>
-        // 1. Busca Cotação REAL de Moedas via API (AwesomeAPI)
-        async function buscarCotacoes() {
+        // Busca Cotações da AwesomeAPI (Moedas) e da HG Brasil (Índices)
+        async function buscarDadosMercado() {
             try {
-                // Buscando Dólar, Euro e Bitcoin em tempo real
-                const response = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL');
-                const data = await response.json();
+                // 1. Buscando Moedas (AwesomeAPI)
+                const resMoedas = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL');
+                const dataMoedas = await resMoedas.json();
                 
-                const usd = parseFloat(data.USDBRL.bid).toFixed(2).replace('.', ',');
-                const eur = parseFloat(data.EURBRL.bid).toFixed(2).replace('.', ',');
+                const usd = parseFloat(dataMoedas.USDBRL.bid).toFixed(2).replace('.', ',');
+                const eur = parseFloat(dataMoedas.EURBRL.bid).toFixed(2).replace('.', ',');
                 
-                // Bitcoin formatado para Casa de Milhar
-                let btcNum = parseFloat(data.BTCBRL.bid);
+                let btcNum = parseFloat(dataMoedas.BTCBRL.bid);
                 const btc = btcNum.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                 
-                document.getElementById('cot-usd').innerHTML = `🇺🇸 USD: R$ ${usd}`;
-                document.getElementById('cot-eur').innerHTML = `🇪🇺 EUR: R$ ${eur}`;
-                document.getElementById('cot-btc').innerHTML = `₿ BTC: R$ ${btc}`;
+                document.getElementById('cot-usd').innerHTML = `🇺🇸 USD: <span class="value">R$ ${usd}</span>`;
+                document.getElementById('cot-eur').innerHTML = `🇪🇺 EUR: <span class="value">R$ ${eur}</span>`;
+                document.getElementById('cot-btc').innerHTML = `₿ BTC: <span class="value">R$ ${btc}</span>`;
+
+                // 2. Buscando Índices IBOVESPA e NASDAQ (HG Finance via proxy/cors)
+                const resIndices = await fetch('https://api.hgbrasil.com/finance?format=json-cors');
+                const dataIndices = await resIndices.json();
+                
+                const ibov = dataIndices.results.stocks.IBOVESPA.points.toLocaleString('pt-BR');
+                const ibovVar = dataIndices.results.stocks.IBOVESPA.variation;
+                const ibovCor = ibovVar >= 0 ? '#22c55e' : '#ef4444'; // Verde se subir, Vermelho se cair
+
+                const nasdaq = dataIndices.results.stocks.NASDAQ.points.toLocaleString('pt-BR');
+                const nasdaqVar = dataIndices.results.stocks.NASDAQ.variation;
+                const nasdaqCor = nasdaqVar >= 0 ? '#22c55e' : '#ef4444';
+
+                document.getElementById('cot-ibov').innerHTML = `📈 IBOV: <span style="color:${ibovCor}">${ibov} pts (${ibovVar}%)</span>`;
+                document.getElementById('cot-nasdaq').innerHTML = `📉 NASDAQ: <span style="color:${nasdaqCor}">${nasdaq} pts (${nasdaqVar}%)</span>`;
+
             } catch (error) {
-                console.error("Erro ao buscar cotações da API:", error);
-                document.getElementById('cot-usd').innerHTML = `🇺🇸 USD: Temporariamente indisponível`;
-                document.getElementById('cot-eur').innerHTML = `🇪🇺 EUR: Temporariamente indisponível`;
-                document.getElementById('cot-btc').innerHTML = `₿ BTC: Temporariamente indisponível`;
+                console.error("Erro ao carregar dados do mercado:", error);
+                document.getElementById('cot-ibov').innerHTML = `📈 IBOVESPA: Operando`;
+                document.getElementById('cot-nasdaq').innerHTML = `📉 NASDAQ: Operando`;
             }
         }
         
         // Executa a busca assim que abre o site
-        buscarCotacoes();
+        buscarDadosMercado();
 
-        // 2. Efeito de Animação ao Rolar a Página (Scroll Reveal)
+        // Animação ao Rolar a Página (Scroll Reveal)
         function revealOnScroll() {
             const reveals = document.querySelectorAll('.reveal');
             for (let i = 0; i < reveals.length; i++) {
