@@ -23,7 +23,6 @@
             --text-gray: #475569; 
             --bg-light: #f8fafc; 
             
-            /* Cor sólida para combinar com o fundo da sua imagem JPEG */
             --header-bg: #2B2B2B; 
         }
 
@@ -125,7 +124,6 @@
         }
         .btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); }
         
-        /* HAMBURGER MENU ICON (Oculto no Desktop) */
         .hamburger {
             display: none;
             cursor: pointer;
@@ -269,6 +267,15 @@
             padding: 100px 80px;
             max-width: 800px;
         }
+        
+        /* NOVO: Estilo da Logo GAC no Banner */
+        .gac-logo-banner {
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 25px;
+            display: block;
+        }
+
         .gac-tag {
             background: #ef4444; 
             color: #fff;
@@ -315,29 +322,29 @@
         }
 
         @media (max-width: 768px) {
-            /* AJUSTES DA FAIXA DO TOPO PARA CELULAR (Mais Fina) */
+            /* AJUSTES FAIXA (MUITO MAIS FINA NO CELULAR) */
             .ticker-wrap { 
-                padding: 6px 0; 
-                font-size: 0.7rem; 
+                padding: 4px 0; /* Padding mínimo */
+                font-size: 0.75rem; 
                 border-bottom-width: 2px;
+                height: 28px; /* Altura exata travada */
             }
             .ticker-item { margin-right: 30px; }
 
-            /* AJUSTE DO CABEÇALHO PARA CELULAR (Acompanha a faixa mais fina) */
+            /* AJUSTE CABEÇALHO (Acompanha a faixa e não descola) */
             .header { 
-                top: 28px; /* Cola no ticker menor */
-                padding: 10px 0; /* Menu um pouco mais fino no mobile */
+                top: 28px; /* Mesma altura travada da faixa */
+                padding: 10px 0; 
             }
-            .logo img { max-height: 40px; } /* Logo um pouco menor para caber melhor */
+            .logo img { max-height: 40px; } 
 
-            /* Configuração do Menu Hambúrguer */
             .hamburger { display: flex; }
             .desktop-only { display: none; }
             .mobile-only { display: block; margin-top: 20px; width: 100%; }
             
             .nav-menu {
                 position: absolute;
-                top: -400px; 
+                top: -450px; 
                 left: 0;
                 width: 100%;
                 background: var(--header-bg);
@@ -351,20 +358,27 @@
                 opacity: 0;
             }
             
-            .nav-menu.active {
-                top: 0; 
-                opacity: 1;
-            }
+            .nav-menu.active { top: 0; opacity: 1; }
 
             .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
             .hamburger.active span:nth-child(2) { opacity: 0; }
             .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-            /* Ajustes Gerais Celular */
-            .hero { padding-top: 140px; } /* Texto do início com respiro alinhado */
+            .hero { padding-top: 140px; } 
             .hero h1 { font-size: 2.5rem; }
             .hero-subtitle { font-size: 1rem; margin-bottom: 30px; }
-            .hero-actions { flex-direction: column; gap: 15px; }
+            
+            /* AJUSTES DOS BOTÕES NO CELULAR (Não esticam mais) */
+            .hero-actions { 
+                flex-direction: column; 
+                gap: 15px; 
+                align-items: center; /* Impede que estiquem 100% */
+            }
+            .hero-actions .btn {
+                width: 85%; /* Largura agradável */
+                max-width: 280px; /* Limite máximo para não ficar gigante */
+                padding: 12px 20px; /* Um pouco mais finos */
+            }
             
             .section-header h2 { font-size: 2.2rem; }
             
@@ -375,12 +389,13 @@
             
             .gallery-grid { grid-template-columns: 1fr; } 
             
+            /* BANNER GAC CELULAR */
             .promo-content { padding: 50px 30px; }
+            .gac-logo-banner { max-width: 180px; } /* Logo um pouco menor no cel */
             .promo-content h3 { font-size: 1.8rem; }
             .btn-gac { font-size: 0.8rem; padding: 15px 20px; text-align: center; }
         }
 
-        /* Celulares muito pequenos */
         @media (max-width: 480px) {
             .stats-grid { grid-template-columns: 1fr; } 
         }
@@ -394,12 +409,9 @@
             <span class="ticker-item" id="cot-usd">🇺🇸 USD: Carregando...</span>
             <span class="ticker-item" id="cot-eur">🇪🇺 EUR: Carregando...</span>
             <span class="ticker-item" id="cot-btc">₿ BTC: Carregando...</span>
-            
             <span class="ticker-item" id="cot-ibov" style="display: none;">📈 IBOVESPA: Carregando...</span>
             <span class="ticker-item" id="cot-nasdaq" style="display: none;">📉 NASDAQ: Carregando...</span>
-            
-            <span class="ticker-item"><span class="highlight">📍 FERREIRA E BRITO ARMAZÉNS GERAIS</span></span>
-        </div>
+            </div>
     </div>
 
     <header class="header">
@@ -413,6 +425,7 @@
                 <li><a href="#diferenciais" class="nav-link">A Empresa</a></li>
                 <li><a href="#servicos" class="nav-link">Serviços</a></li>
                 <li><a href="#galeria" class="nav-link">Estrutura</a></li>
+                <li><a href="#parceiro" class="nav-link">Parceiros</a></li>
                 <li class="mobile-only"><a href="https://www.nxsistemas.com/ferreiraebrito" class="btn btn-portal" target="_blank">Acesso Restrito</a></li>
             </ul>
 
@@ -461,7 +474,7 @@
                         <div class="stat-desc">Monitoramento</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">+50k</div>
+                        <div class="stat-number">+200k</div>
                         <div class="stat-desc">Ton. Movimentadas</div>
                     </div>
                 </div>
@@ -526,6 +539,8 @@
             <div class="container">
                 <div class="promo-gac">
                     <div class="promo-content">
+                        <img src="assets/logo-gac.avif" alt="GAC Agro Consultoria" class="gac-logo-banner">
+                        
                         <span class="gac-tag">Sua empresa pode estar irregular sem saber</span>
                         <h3>Diagnóstico de Conformidade MAPA</h3>
                         <p>Empresas que trabalham com fertilizantes e insumos agrícolas precisam atender a rigorosas exigências do MAPA. Muitas operam com riscos regulatórios e passivos altíssimos sem perceber. A <strong>GAC Consultoria</strong> possui especialistas focados em blindar sua operação, garantindo rentabilidade e governança corporativa.</p>
@@ -547,7 +562,6 @@
     </footer>
 
     <script>
-        // Funcionalidade do Menu Hambúrguer (Mobile)
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -557,7 +571,6 @@
             navMenu.classList.toggle('active');
         });
 
-        // Fecha o menu ao clicar em um link
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
@@ -565,7 +578,6 @@
             });
         });
 
-        // Dados de Mercado
         async function buscarDadosMercado() {
             try {
                 const resMoedas = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL');
@@ -612,7 +624,6 @@
         
         buscarDadosMercado();
 
-        // Animação de Scroll
         function revealOnScroll() {
             const reveals = document.querySelectorAll('.reveal');
             for (let i = 0; i < reveals.length; i++) {
