@@ -23,7 +23,8 @@
             --text-gray: #475569; 
             --bg-light: #f8fafc; 
             
-            --header-bg: #2B2B2B; 
+            /* RESTAURADO: Azul escuro translúcido original */
+            --header-bg: rgba(15, 23, 42, 0.95); 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -73,13 +74,16 @@
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* HEADER */
+        /* HEADER - RESTAURADO COM EFEITO BLUR */
         .header {
             position: fixed;
             top: 38px;
             width: 100%;
             padding: 15px 0;
             background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000;
             transition: all 0.3s ease;
         }
@@ -247,13 +251,13 @@
             transform: scale(1.1); 
         }
 
-        /* CARD PARCEIRO - GAC */
+        /* CARD PARCEIRO - GAC (REDUZIDO E COMPACTO) */
         .promo-gac {
             background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop') center/cover;
             position: relative;
             border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2);
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
         }
         .promo-gac::before {
             content: '';
@@ -264,40 +268,40 @@
         .promo-content {
             position: relative;
             z-index: 1;
-            padding: 100px 80px;
+            padding: 60px 50px; /* Reduzido o padding geral */
             max-width: 800px;
         }
         
-        /* NOVO: Estilo da Logo GAC no Banner */
         .gac-logo-banner {
-            max-width: 250px;
+            max-width: 180px; /* Logo da GAC reduzida */
             height: auto;
-            margin-bottom: 25px;
+            margin-bottom: 20px; /* Margem reduzida */
             display: block;
         }
 
         .gac-tag {
             background: #ef4444; 
             color: #fff;
-            padding: 8px 20px;
+            padding: 6px 15px;
             border-radius: 20px;
             font-weight: 800;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             display: inline-block;
-            margin-bottom: 25px;
+            margin-bottom: 15px; /* Margem reduzida */
         }
-        .promo-content h3 { font-size: 2.5rem; margin-bottom: 25px; color: #fff; }
-        .promo-content p { font-size: 1.15rem; color: #e2e8f0; margin-bottom: 40px; line-height: 1.7; }
+        .promo-content h3 { font-size: 2rem; margin-bottom: 15px; color: #fff; } /* Fonte e margem reduzidas */
+        .promo-content p { font-size: 1rem; color: #e2e8f0; margin-bottom: 25px; line-height: 1.6; } /* Fonte reduzida */
         .btn-gac {
             display: inline-flex;
             align-items: center;
             background: #fff;
             color: #0f172a;
-            padding: 18px 36px;
+            padding: 14px 28px; /* Botão reduzido */
             border-radius: 30px;
             font-weight: 800;
             text-transform: uppercase;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
         }
         .btn-gac:hover { background: var(--secondary); color: #fff; transform: scale(1.05); }
@@ -322,18 +326,16 @@
         }
 
         @media (max-width: 768px) {
-            /* AJUSTES FAIXA (MUITO MAIS FINA NO CELULAR) */
             .ticker-wrap { 
-                padding: 4px 0; /* Padding mínimo */
+                padding: 4px 0; 
                 font-size: 0.75rem; 
                 border-bottom-width: 2px;
-                height: 28px; /* Altura exata travada */
+                height: 28px; 
             }
             .ticker-item { margin-right: 30px; }
 
-            /* AJUSTE CABEÇALHO (Acompanha a faixa e não descola) */
             .header { 
-                top: 28px; /* Mesma altura travada da faixa */
+                top: 28px; 
                 padding: 10px 0; 
             }
             .logo img { max-height: 40px; } 
@@ -368,16 +370,15 @@
             .hero h1 { font-size: 2.5rem; }
             .hero-subtitle { font-size: 1rem; margin-bottom: 30px; }
             
-            /* AJUSTES DOS BOTÕES NO CELULAR (Não esticam mais) */
             .hero-actions { 
                 flex-direction: column; 
                 gap: 15px; 
-                align-items: center; /* Impede que estiquem 100% */
+                align-items: center; 
             }
             .hero-actions .btn {
-                width: 85%; /* Largura agradável */
-                max-width: 280px; /* Limite máximo para não ficar gigante */
-                padding: 12px 20px; /* Um pouco mais finos */
+                width: 85%; 
+                max-width: 280px; 
+                padding: 12px 20px; 
             }
             
             .section-header h2 { font-size: 2.2rem; }
@@ -389,11 +390,12 @@
             
             .gallery-grid { grid-template-columns: 1fr; } 
             
-            /* BANNER GAC CELULAR */
-            .promo-content { padding: 50px 30px; }
-            .gac-logo-banner { max-width: 180px; } /* Logo um pouco menor no cel */
-            .promo-content h3 { font-size: 1.8rem; }
-            .btn-gac { font-size: 0.8rem; padding: 15px 20px; text-align: center; }
+            /* BANNER GAC CELULAR - AINDA MAIS COMPACTO */
+            .promo-content { padding: 35px 25px; } /* Padding reduzido drasticamente no celular */
+            .gac-logo-banner { max-width: 140px; margin-bottom: 15px; } /* Logo ainda menor */
+            .promo-content h3 { font-size: 1.5rem; margin-bottom: 10px; } /* Texto menor */
+            .promo-content p { font-size: 0.95rem; margin-bottom: 20px; }
+            .btn-gac { font-size: 0.8rem; padding: 12px 20px; text-align: center; }
         }
 
         @media (max-width: 480px) {
@@ -411,7 +413,7 @@
             <span class="ticker-item" id="cot-btc">₿ BTC: Carregando...</span>
             <span class="ticker-item" id="cot-ibov" style="display: none;">📈 IBOVESPA: Carregando...</span>
             <span class="ticker-item" id="cot-nasdaq" style="display: none;">📉 NASDAQ: Carregando...</span>
-            </div>
+        </div>
     </div>
 
     <header class="header">
