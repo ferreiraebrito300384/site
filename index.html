@@ -23,7 +23,8 @@
             --text-gray: #475569; 
             --bg-light: #f8fafc; 
             
-           --glass-header: rgba(15, 23, 42, 0.95);
+            /* Cor sólida para combinar com o fundo da sua imagem JPEG */
+            --header-bg: #2B2B2B; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,7 +40,6 @@
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: var(--text-dark); }
         a { text-decoration: none; color: inherit; }
         
-        /* CORREÇÃO DOS ESPAÇAMENTOS (SECTIONS VS CONTAINERS) */
         section { padding: 80px 0; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
@@ -74,29 +74,30 @@
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-/* HEADER */
-.header {
-    position: fixed;
-    top: 38px;
-    width: 100%;
-    padding: 15px 0;
-    background: var(--glass-header);
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 38px;
+            width: 100%;
+            padding: 15px 0;
+            background: var(--header-bg);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
         .nav { display: flex; justify-content: space-between; align-items: center; }
         
-        .logo { font-family: 'Montserrat', sans-serif; color: #fff; font-weight: 800; font-size: 1.2rem; }
+        .logo { font-family: 'Montserrat', sans-serif; color: #fff; font-weight: 800; font-size: 1.2rem; z-index: 1002; position: relative;}
         .logo img {
             max-height: 55px;
             width: auto;
             display: block;
         }
 
-        .nav-menu { display: flex; gap: 40px; list-style: none; }
+        .nav-menu { display: flex; gap: 40px; list-style: none; align-items: center;}
         .nav-menu a { color: #f8fafc; font-weight: 500; transition: color 0.3s; text-transform: uppercase; font-size: 0.9rem;}
         .nav-menu a:hover { color: var(--primary); }
         
+        /* BOTÕES */
         .btn {
             padding: 14px 28px;
             border-radius: 30px;
@@ -107,14 +108,15 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border: none;
+            display: inline-block;
+            text-align: center;
         }
         .btn-portal {
             background: transparent;
             border: 2px solid var(--primary);
-            color: var(--primary);
-            margin-left: 20px;
+            color: var(--primary) !important;
         }
-        .btn-portal:hover { background: var(--primary); color: #fff; box-shadow: 0 0 15px rgba(14,165,233,0.5); }
+        .btn-portal:hover { background: var(--primary); color: #fff !important; box-shadow: 0 0 15px rgba(14,165,233,0.5); }
         
         .btn-primary {
             background: var(--primary);
@@ -122,13 +124,32 @@
             box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
         }
         .btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); }
+        
+        /* HAMBURGER MENU ICON (Oculto no Desktop) */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 1002;
+            position: relative;
+        }
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 3px;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .mobile-only { display: none; }
 
         /* HERO SECTION */
         .hero {
-            min-height: 100vh;
+            padding-top: 200px; 
+            padding-bottom: 60px; 
             display: flex;
             align-items: center;
-            padding-top: 120px;
             position: relative;
         }
         .hero-content {
@@ -205,10 +226,10 @@
             margin-bottom: 25px;
         }
 
-        /* GALERIA (Forçada para 1 única linha no Desktop) */
+        /* GALERIA */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 colunas fixas */
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px; 
         }
         .gallery-item {
@@ -228,7 +249,7 @@
             transform: scale(1.1); 
         }
 
-        /* CARD PARCEIRO - GAC CONSULTORIA */
+        /* CARD PARCEIRO - GAC */
         .promo-gac {
             background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop') center/cover;
             position: relative;
@@ -274,7 +295,7 @@
         }
         .btn-gac:hover { background: var(--secondary); color: #fff; transform: scale(1.05); }
 
-        /* FOOTER LIMPADO */
+        /* FOOTER */
         .footer {
             background: var(--text-dark);
             padding: 50px 0;
@@ -282,19 +303,75 @@
             color: #fff;
         }
 
-        /* ANIMAÇÕES DE SCROLL */
+        /* ANIMAÇÕES */
         .reveal { opacity: 0; transform: translateY(60px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* RESPONSIVO */
+        /* ==========================================
+           RESPONSIVIDADE (CELULARES E TABLETS)
+           ========================================== */
+        @media (max-width: 992px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
-            .nav-menu { display: none; }
-            section { padding: 80px 0; }
-            .stats-grid { grid-template-columns: 1fr 1fr; padding: 30px; gap: 20px; }
-            .gallery-grid { grid-template-columns: 1fr; } /* No celular a galeria fica 1 em cima da outra */
+            /* Configuração do Menu Hambúrguer */
+            .hamburger { display: flex; }
+            .desktop-only { display: none; }
+            .mobile-only { display: block; margin-top: 20px; width: 100%; }
+            
+            .nav-menu {
+                position: absolute;
+                top: -400px; /* Esconde o menu para cima */
+                left: 0;
+                width: 100%;
+                background: var(--header-bg);
+                flex-direction: column;
+                align-items: center;
+                padding: 100px 20px 30px 20px;
+                gap: 20px;
+                transition: 0.4s ease-in-out;
+                z-index: 1001;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                opacity: 0;
+            }
+            
+            .nav-menu.active {
+                top: 0; /* Desce o menu */
+                opacity: 1;
+            }
+
+            /* Animação do ícone X */
+            .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+            /* Ajustes Gerais Celular */
+            .hero { padding-top: 150px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1rem; margin-bottom: 30px; }
+            .hero-actions { flex-direction: column; gap: 15px; }
+            
+            .section-header h2 { font-size: 2.2rem; }
+            
+            .stats-grid { grid-template-columns: 1fr 1fr; padding: 30px 20px; gap: 20px; }
+            .stat-number { font-size: 2.5rem; }
+            
+            .service-card { padding: 30px 20px; }
+            
+            .gallery-grid { grid-template-columns: 1fr; } /* 1 foto por linha no celular */
+            
             .promo-content { padding: 50px 30px; }
-            .hero-actions { flex-direction: column; }
+            .promo-content h3 { font-size: 1.8rem; }
+            .btn-gac { font-size: 0.8rem; padding: 15px 20px; text-align: center; }
+            
+            .ticker-item { margin-right: 30px; }
+        }
+
+        /* Celulares muito pequenos */
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; } /* 1 coluna de números */
+            .logo img { max-height: 45px; }
         }
     </style>
 </head>
@@ -320,14 +397,22 @@
                 <img src="assets/logo-branca.png" alt="Ferreira e Brito Armazéns Gerais">
             </a>
             
-            <ul class="nav-menu">
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#diferenciais">A Empresa</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#galeria">Estrutura</a></li>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#inicio" class="nav-link">Início</a></li>
+                <li><a href="#diferenciais" class="nav-link">A Empresa</a></li>
+                <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                <li><a href="#galeria" class="nav-link">Estrutura</a></li>
+                <li class="mobile-only"><a href="https://www.nxsistemas.com/ferreiraebrito" class="btn btn-portal" target="_blank">Acesso Restrito</a></li>
             </ul>
+
             <div style="display: flex; align-items: center;">
-                <a href="https://www.nxsistemas.com/ferreiraebrito" class="btn btn-portal" target="_blank">Acesso Restrito</a>
+                <a href="https://www.nxsistemas.com/ferreiraebrito" class="btn btn-portal desktop-only" target="_blank">Acesso Restrito</a>
+                
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </nav>
     </header>
@@ -451,8 +536,26 @@
     </footer>
 
     <script>
+        // Funcionalidade do Menu Hambúrguer (Mobile)
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fecha o menu ao clicar em um link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Dados de Mercado
         async function buscarDadosMercado() {
-            // 1. Buscando Moedas 
             try {
                 const resMoedas = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL');
                 const dataMoedas = await resMoedas.json();
@@ -469,7 +572,6 @@
                 console.error("Erro Moedas:", error);
             }
 
-            // 2. Buscando Índices (Seguro: Se falhar, eles continuam invisíveis)
             try {
                 const resIndices = await fetch('https://api.hgbrasil.com/finance?format=json-cors');
                 const dataIndices = await resIndices.json();
@@ -489,13 +591,11 @@
                     elIbov.innerHTML = `📈 IBOV: <span style="color:${ibovCor}">${ibov} pts (${ibovVar}%)</span>`;
                     elNasdaq.innerHTML = `📉 NASDAQ: <span style="color:${nasdaqCor}">${nasdaq} pts (${nasdaqVar}%)</span>`;
                     
-                    // Se deu certo, mostra na tela
                     elIbov.style.display = 'inline-block';
                     elNasdaq.style.display = 'inline-block';
                 }
             } catch (error) {
                 console.error("Erro Índices: API indisponível no momento.");
-                // Como display="none" já está no HTML, nada feio vai aparecer.
             }
         }
         
