@@ -43,22 +43,23 @@
         section { padding: 80px 0; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* TICKER / FAIXA DE COTAÇÕES AO VIVO */
+/* TICKER / FAIXA DE COTAÇÕES AO VIVO */
         .ticker-wrap {
             width: 100%;
             background-color: #000;
             color: #fff;
-            padding: 10px 0;
-            font-size: 0.85rem;
+            padding: 5px 0; /* REDUZIDO: de 10px para 5px */
+            font-size: 0.70rem; /* REDUZIDO: de 0.85rem para 0.70rem */
             font-weight: 600;
             white-space: nowrap;
             overflow: hidden;
-            border-bottom: 3px solid var(--primary);
+            border-bottom: 2px solid var(--primary); /* REDUZIDO: de 3px para 2px */
             position: fixed;
             top: 0;
             z-index: 2000;
             display: flex;
             align-items: center;
+            height: 25px; /* NOVA ALTURA FIXA E FINA */
         }
         .ticker {
             display: inline-block;
@@ -74,10 +75,10 @@
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* HEADER - RESTAURADO COM EFEITO BLUR */
+/* HEADER - RESTAURADO COM EFEITO BLUR */
         .header {
             position: fixed;
-            top: 38px;
+            top: 25px; /* AJUSTADO: era 38px. Tem que ser igual ao height do ticker-wrap */
             width: 100%;
             padding: 15px 0;
             background: var(--header-bg);
@@ -325,19 +326,20 @@
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
-        @media (max-width: 768px) {
+@media (max-width: 768px) {
             .ticker-wrap { 
-                padding: 4px 0; 
-                font-size: 0.75rem; 
-                border-bottom-width: 2px;
-                height: 28px; 
+                padding: 2px 0; /* REDUZIDO */
+                font-size: 0.60rem; /* FONTE BEM PEQUENA PARA CELULAR */
+                border-bottom-width: 1px;
+                height: 18px; /* ALTURA SUPER FINA */
             }
             .ticker-item { margin-right: 30px; }
 
             .header { 
-                top: 28px; 
+                top: 18px; /* AJUSTADO: acompanha a altura do ticker no celular */
                 padding: 10px 0; 
             }
+            /* .
             .logo img { max-height: 40px; } 
 
             .hamburger { display: flex; }
@@ -444,9 +446,9 @@
     </header>
 
     <main>
-        <section id="inicio" class="hero">
+<section id="inicio" class="hero">
             <div class="hero-content reveal">
-                <h1>A Força da sua <br><span>Logística e Armazenagem</span></h1>
+                <h1>Logística Inteligente que<br><span>Agrega Valor ao seu Negócio</span></h1>
                 <p class="hero-subtitle">Especialistas absolutos em armazenamento de grãos e fertilizantes. Infraestrutura de ponta e processos rigorosos para potencializar o seu negócio.</p>
                 <div class="hero-actions">
                     <a href="mailto:jamilson.silva@ferreiraebrito.com" class="btn btn-primary">Solicitar Orçamento</a>
