@@ -15,15 +15,15 @@
            CORES E VARIÁVEIS - TEMA CLARO
            ========================================== */
         :root {
-            --primary: #0ea5e9; /* Azul Corporativo */
+            --primary: #0ea5e9; 
             --primary-dark: #0284c7;
-            --secondary: #f97316; /* Laranja Logística */
+            --secondary: #f97316; 
             
-            --text-dark: #0f172a; /* Texto principal escuro */
-            --text-gray: #475569; /* Texto secundário */
-            --bg-light: #f8fafc; /* Fundo claro principal */
+            --text-dark: #0f172a; 
+            --text-gray: #475569; 
+            --bg-light: #f8fafc; 
             
-            --glass-header: rgba(15, 23, 42, 0.95); /* Header escuro para a logo branca aparecer */
+            --glass-header: rgba(15, 23, 42, 0.95); 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,13 +32,15 @@
             font-family: 'Inter', sans-serif;
             color: var(--text-gray);
             background-color: var(--bg-light);
-            /* GRADE HEXAGONAL (EFEITO SUTIL DE FUNDO) */
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='103.92' viewBox='0 0 60 103.92' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 17.32L0 34.64v34.64l30 17.32 30-17.32V34.64L30 17.32zM0 103.92V69.28l30-17.32 30 17.32v34.64l-30 17.32L0 103.92zM30 51.96L0 69.28v34.64l30 17.32 30-17.32V69.28L30 51.96z' fill='%23cbd5e1' fill-opacity='0.25' fill-rule='evenodd'/%3E%3C/svg%3E");
             overflow-x: hidden;
         }
 
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: var(--text-dark); }
         a { text-decoration: none; color: inherit; }
+        
+        /* CORREÇÃO DOS ESPAÇAMENTOS (SECTIONS VS CONTAINERS) */
+        section { padding: 120px 0; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
         /* TICKER / FAIXA DE COTAÇÕES AO VIVO */
@@ -62,17 +64,17 @@
             display: inline-block;
             white-space: nowrap;
             padding-left: 100%;
-            animation: ticker 35s linear infinite; /* Mais lento para dar tempo de ler tudo */
+            animation: ticker 35s linear infinite; 
         }
         .ticker-item { margin-right: 60px; }
         .ticker-item span.highlight { color: var(--primary); }
-        .ticker-item span.value { color: #22c55e; } /* Verde para valores */
+        .ticker-item span.value { color: #22c55e; } 
         @keyframes ticker {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* HEADER (Mantido escuro para a logo branca destacar) */
+        /* HEADER */
         .header {
             position: fixed;
             top: 38px;
@@ -86,9 +88,11 @@
         }
         .nav { display: flex; justify-content: space-between; align-items: center; }
         
+        .logo { font-family: 'Montserrat', sans-serif; color: #fff; font-weight: 800; font-size: 1.2rem; }
         .logo img {
             max-height: 55px;
             width: auto;
+            display: block;
         }
 
         .nav-menu { display: flex; gap: 40px; list-style: none; }
@@ -156,19 +160,18 @@
         .btn-outline-dark { border: 2px solid var(--text-dark); color: var(--text-dark); }
         .btn-outline-dark:hover { background: var(--text-dark); color: #fff; }
 
-        /* SECTIONS GERAIS (Mais Espaçamento) */
-        section { padding: 150px 0; }
-        .section-header { text-align: center; margin-bottom: 80px; }
+        /* HEADER DE SEÇÕES */
+        .section-header { text-align: center; margin-bottom: 60px; }
         .section-header h2 { font-size: 2.8rem; margin-bottom: 15px; }
         .section-header p { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* DIFERENCIAIS / STATS (Design Claro) */
+        /* DIFERENCIAIS / STATS */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 30px;
             background: #ffffff;
-            padding: 60px;
+            padding: 50px;
             border-radius: 30px;
             box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
             border: 1px solid #e2e8f0;
@@ -181,7 +184,7 @@
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px; /* Mais espaço entre os cards */
+            gap: 40px; 
         }
         .service-card {
             background: #ffffff;
@@ -204,11 +207,11 @@
             margin-bottom: 25px;
         }
 
-        /* GALERIA (Sem texto e com mais espaço) */
+        /* GALERIA (Forçada para 1 única linha no Desktop) */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px; /* Aumentado o espaço entre as fotos */
+            grid-template-columns: repeat(4, 1fr); /* 4 colunas fixas */
+            gap: 20px; 
         }
         .gallery-item {
             position: relative;
@@ -224,7 +227,7 @@
             transition: transform 0.6s ease;
         }
         .gallery-item:hover img {
-            transform: scale(1.1); /* Efeito suave ao passar o mouse */
+            transform: scale(1.1); 
         }
 
         /* CARD PARCEIRO - GAC CONSULTORIA */
@@ -248,7 +251,7 @@
             max-width: 800px;
         }
         .gac-tag {
-            background: #ef4444; /* Vermelho alerta */
+            background: #ef4444; 
             color: #fff;
             padding: 8px 20px;
             border-radius: 20px;
@@ -289,8 +292,9 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.8rem; }
             .nav-menu { display: none; }
-            section { padding: 100px 0; }
+            section { padding: 80px 0; }
             .stats-grid { grid-template-columns: 1fr 1fr; padding: 30px; gap: 20px; }
+            .gallery-grid { grid-template-columns: 1fr; } /* No celular a galeria fica 1 em cima da outra */
             .promo-content { padding: 50px 30px; }
             .hero-actions { flex-direction: column; }
         }
@@ -301,11 +305,13 @@
     <div class="ticker-wrap">
         <div class="ticker" id="ticker-content">
             <span class="ticker-item"><span class="highlight">📊 MERCADO AO VIVO</span></span>
-            <span class="ticker-item" id="cot-usd">🇺🇸 USD: Aguardando...</span>
-            <span class="ticker-item" id="cot-eur">🇪🇺 EUR: Aguardando...</span>
-            <span class="ticker-item" id="cot-btc">₿ BTC: Aguardando...</span>
-            <span class="ticker-item" id="cot-ibov">📈 IBOVESPA: Aguardando...</span>
-            <span class="ticker-item" id="cot-nasdaq">📉 NASDAQ: Aguardando...</span>
+            <span class="ticker-item" id="cot-usd">🇺🇸 USD: Carregando...</span>
+            <span class="ticker-item" id="cot-eur">🇪🇺 EUR: Carregando...</span>
+            <span class="ticker-item" id="cot-btc">₿ BTC: Carregando...</span>
+            
+            <span class="ticker-item" id="cot-ibov" style="display: none;">📈 IBOVESPA: Carregando...</span>
+            <span class="ticker-item" id="cot-nasdaq" style="display: none;">📉 NASDAQ: Carregando...</span>
+            
             <span class="ticker-item"><span class="highlight">📍 FERREIRA E BRITO ARMAZÉNS GERAIS</span></span>
         </div>
     </div>
@@ -313,7 +319,7 @@
     <header class="header">
         <nav class="nav container">
             <a href="#" class="logo">
-                <img src="assets/logo fb sem fundo.jpeg" alt="Ferreira e Brito Armazéns Gerais">
+                <img src="assets/logo%20fb%20sem%20fundo.jpeg" alt="Ferreira e Brito Armazéns Gerais">
             </a>
             
             <ul class="nav-menu">
@@ -340,91 +346,99 @@
             </div>
         </section>
 
-        <section id="diferenciais" class="container reveal">
-            <div class="section-header">
-                <p>Nossa História</p>
-                <h2>Solidez e Confiança</h2>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">42</div>
-                    <div class="stat-desc">Anos de Experiência</div>
+        <section id="diferenciais" class="reveal">
+            <div class="container">
+                <div class="section-header">
+                    <p>Nossa História</p>
+                    <h2>Solidez e Confiança</h2>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-desc">Segurança da Carga</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24h</div>
-                    <div class="stat-desc">Monitoramento</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">+50k</div>
-                    <div class="stat-desc">Ton. Movimentadas</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="servicos" class="container reveal">
-            <div class="section-header">
-                <p>Soluções Completas</p>
-                <h2>Excelência em cada etapa</h2>
-            </div>
-            <div class="services-grid">
-                <article class="service-card">
-                    <div class="service-icon">📥</div>
-                    <h3>Recebimento</h3>
-                    <p>Processo de triagem e recebimento de alta eficiência, minimizando o tempo de espera dos caminhões e garantindo a integridade do produto.</p>
-                </article>
-                <article class="service-card">
-                    <div class="service-icon">🏭</div>
-                    <h3>Armazenagem</h3>
-                    <p>Estrutura preparada para suportar grandes volumes de fertilizantes. Garantimos a integridade total do seu produto: entregamos exatamente o que recebemos.</p>
-                </article>
-                <article class="service-card">
-                    <div class="service-icon">📦</div>
-                    <h3>Ensacamento</h3>
-                    <p>Linha de produção ágil para envase em Big Bags de 1 tonelada ou sacarias menores (25kg/50kg) conforme a demanda do cliente final.</p>
-                </article>
-                <article class="service-card">
-                    <div class="service-icon">🚛</div>
-                    <h3>Expedição</h3>
-                    <p>Logística de saída otimizada. Carregamento rápido e seguro, garantindo que sua carga chegue ao destino do cliente com total pontualidade.</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="galeria" class="container reveal">
-            <div class="section-header">
-                <p>Nossa Estrutura</p>
-                <h2>Conheça nossas instalações</h2>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="assets/galeria/armazem.png" alt="Armazém Ferreira e Brito">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/galeria/bigbags.png" alt="Big bags">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/galeria/fertilizantes.png" alt="Fertilizantes">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/galeria/empilhadeiras.png" alt="Empilhadeiras em operação">
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">42</div>
+                        <div class="stat-desc">Anos de Experiência</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-desc">Segurança da Carga</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24h</div>
+                        <div class="stat-desc">Monitoramento</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">+50k</div>
+                        <div class="stat-desc">Ton. Movimentadas</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="parceiro" class="container reveal">
-            <div class="promo-gac">
-                <div class="promo-content">
-                    <span class="gac-tag">Sua empresa pode estar irregular sem saber</span>
-                    <h3>Diagnóstico de Conformidade MAPA</h3>
-                    <p>Empresas que trabalham com fertilizantes e insumos agrícolas precisam atender a rigorosas exigências do MAPA. Muitas operam com riscos regulatórios e passivos altíssimos sem perceber. A <strong>GAC Consultoria</strong> possui especialistas focados em blindar sua operação, garantindo rentabilidade e governança corporativa.</p>
-                    <a href="https://gacconsultoria.figma.site/" target="_blank" rel="noopener noreferrer" class="btn-gac">
-                        Fazer Diagnóstico com a GAC ↗
-                    </a>
+        <section id="servicos" class="reveal">
+            <div class="container">
+                <div class="section-header">
+                    <p>Soluções Completas</p>
+                    <h2>Excelência em cada etapa</h2>
+                </div>
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-icon">📥</div>
+                        <h3>Recebimento</h3>
+                        <p>Processo de triagem e recebimento de alta eficiência, minimizando o tempo de espera dos caminhões e garantindo a integridade do produto.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">🏭</div>
+                        <h3>Armazenagem</h3>
+                        <p>Estrutura preparada para suportar grandes volumes de fertilizantes. Garantimos a integridade total do seu produto: entregamos exatamente o que recebemos.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">📦</div>
+                        <h3>Ensacamento</h3>
+                        <p>Linha de produção ágil para envase em Big Bags de 1 tonelada ou sacarias menores (25kg/50kg) conforme a demanda do cliente final.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">🚛</div>
+                        <h3>Expedição</h3>
+                        <p>Logística de saída otimizada. Carregamento rápido e seguro, garantindo que sua carga chegue ao destino do cliente com total pontualidade.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria" class="reveal">
+            <div class="container">
+                <div class="section-header">
+                    <p>Nossa Estrutura</p>
+                    <h2>Conheça nossas instalações</h2>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="assets/galeria/armazem.png" alt="Armazém Ferreira e Brito">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/galeria/bigbags.png" alt="Big bags">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/galeria/fertilizantes.png" alt="Fertilizantes">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/galeria/empilhadeiras.png" alt="Empilhadeiras em operação">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="parceiro" class="reveal">
+            <div class="container">
+                <div class="promo-gac">
+                    <div class="promo-content">
+                        <span class="gac-tag">Sua empresa pode estar irregular sem saber</span>
+                        <h3>Diagnóstico de Conformidade MAPA</h3>
+                        <p>Empresas que trabalham com fertilizantes e insumos agrícolas precisam atender a rigorosas exigências do MAPA. Muitas operam com riscos regulatórios e passivos altíssimos sem perceber. A <strong>GAC Consultoria</strong> possui especialistas focados em blindar sua operação, garantindo rentabilidade e governança corporativa.</p>
+                        <a href="https://gacconsultoria.figma.site/" target="_blank" rel="noopener noreferrer" class="btn-gac">
+                            Fazer Diagnóstico com a GAC ↗
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -439,49 +453,57 @@
     </footer>
 
     <script>
-        // Busca Cotações da AwesomeAPI (Moedas) e da HG Brasil (Índices)
         async function buscarDadosMercado() {
+            // 1. Buscando Moedas 
             try {
-                // 1. Buscando Moedas (AwesomeAPI)
                 const resMoedas = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL');
                 const dataMoedas = await resMoedas.json();
                 
                 const usd = parseFloat(dataMoedas.USDBRL.bid).toFixed(2).replace('.', ',');
                 const eur = parseFloat(dataMoedas.EURBRL.bid).toFixed(2).replace('.', ',');
-                
                 let btcNum = parseFloat(dataMoedas.BTCBRL.bid);
                 const btc = btcNum.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                 
                 document.getElementById('cot-usd').innerHTML = `🇺🇸 USD: <span class="value">R$ ${usd}</span>`;
                 document.getElementById('cot-eur').innerHTML = `🇪🇺 EUR: <span class="value">R$ ${eur}</span>`;
                 document.getElementById('cot-btc').innerHTML = `₿ BTC: <span class="value">R$ ${btc}</span>`;
+            } catch (error) {
+                console.error("Erro Moedas:", error);
+            }
 
-                // 2. Buscando Índices IBOVESPA e NASDAQ (HG Finance via proxy/cors)
+            // 2. Buscando Índices (Seguro: Se falhar, eles continuam invisíveis)
+            try {
                 const resIndices = await fetch('https://api.hgbrasil.com/finance?format=json-cors');
                 const dataIndices = await resIndices.json();
                 
-                const ibov = dataIndices.results.stocks.IBOVESPA.points.toLocaleString('pt-BR');
-                const ibovVar = dataIndices.results.stocks.IBOVESPA.variation;
-                const ibovCor = ibovVar >= 0 ? '#22c55e' : '#ef4444'; // Verde se subir, Vermelho se cair
+                if(dataIndices && dataIndices.results && dataIndices.results.stocks) {
+                    const ibov = dataIndices.results.stocks.IBOVESPA.points.toLocaleString('pt-BR');
+                    const ibovVar = dataIndices.results.stocks.IBOVESPA.variation;
+                    const ibovCor = ibovVar >= 0 ? '#22c55e' : '#ef4444';
 
-                const nasdaq = dataIndices.results.stocks.NASDAQ.points.toLocaleString('pt-BR');
-                const nasdaqVar = dataIndices.results.stocks.NASDAQ.variation;
-                const nasdaqCor = nasdaqVar >= 0 ? '#22c55e' : '#ef4444';
+                    const nasdaq = dataIndices.results.stocks.NASDAQ.points.toLocaleString('pt-BR');
+                    const nasdaqVar = dataIndices.results.stocks.NASDAQ.variation;
+                    const nasdaqCor = nasdaqVar >= 0 ? '#22c55e' : '#ef4444';
 
-                document.getElementById('cot-ibov').innerHTML = `📈 IBOV: <span style="color:${ibovCor}">${ibov} pts (${ibovVar}%)</span>`;
-                document.getElementById('cot-nasdaq').innerHTML = `📉 NASDAQ: <span style="color:${nasdaqCor}">${nasdaq} pts (${nasdaqVar}%)</span>`;
+                    const elIbov = document.getElementById('cot-ibov');
+                    const elNasdaq = document.getElementById('cot-nasdaq');
 
+                    elIbov.innerHTML = `📈 IBOV: <span style="color:${ibovCor}">${ibov} pts (${ibovVar}%)</span>`;
+                    elNasdaq.innerHTML = `📉 NASDAQ: <span style="color:${nasdaqCor}">${nasdaq} pts (${nasdaqVar}%)</span>`;
+                    
+                    // Se deu certo, mostra na tela
+                    elIbov.style.display = 'inline-block';
+                    elNasdaq.style.display = 'inline-block';
+                }
             } catch (error) {
-                console.error("Erro ao carregar dados do mercado:", error);
-                document.getElementById('cot-ibov').innerHTML = `📈 IBOVESPA: Operando`;
-                document.getElementById('cot-nasdaq').innerHTML = `📉 NASDAQ: Operando`;
+                console.error("Erro Índices: API indisponível no momento.");
+                // Como display="none" já está no HTML, nada feio vai aparecer.
             }
         }
         
-        // Executa a busca assim que abre o site
         buscarDadosMercado();
 
-        // Animação ao Rolar a Página (Scroll Reveal)
+        // Animação de Scroll
         function revealOnScroll() {
             const reveals = document.querySelectorAll('.reveal');
             for (let i = 0; i < reveals.length; i++) {
@@ -495,7 +517,7 @@
             }
         }
         window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // Dispara ao carregar
+        revealOnScroll(); 
     </script>
 </body>
 </html>
