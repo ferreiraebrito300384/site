@@ -23,7 +23,6 @@
             --text-gray: #475569; 
             --bg-light: #f8fafc; 
             
-            /* RESTAURADO: Azul escuro translúcido original */
             --header-bg: rgba(15, 23, 42, 0.95); 
         }
 
@@ -43,23 +42,23 @@
         section { padding: 80px 0; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* TICKER / FAIXA DE COTAÇÕES AO VIVO */
+        /* TICKER / FAIXA DE COTAÇÕES AO VIVO */
         .ticker-wrap {
             width: 100%;
             background-color: #000;
             color: #fff;
-            padding: 5px 0; /* REDUZIDO: de 10px para 5px */
-            font-size: 0.70rem; /* REDUZIDO: de 0.85rem para 0.70rem */
+            padding: 5px 0;
+            font-size: 0.70rem;
             font-weight: 600;
             white-space: nowrap;
             overflow: hidden;
-            border-bottom: 2px solid var(--primary); /* REDUZIDO: de 3px para 2px */
+            border-bottom: 2px solid var(--primary);
             position: fixed;
             top: 0;
             z-index: 2000;
             display: flex;
             align-items: center;
-            height: 25px; /* NOVA ALTURA FIXA E FINA */
+            height: 25px;
         }
         .ticker {
             display: inline-block;
@@ -75,10 +74,10 @@
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-/* HEADER - RESTAURADO COM EFEITO BLUR */
+        /* HEADER */
         .header {
             position: fixed;
-            top: 25px; /* AJUSTADO: era 38px. Tem que ser igual ao height do ticker-wrap */
+            top: 25px; 
             width: 100%;
             padding: 15px 0;
             background: var(--header-bg);
@@ -88,7 +87,7 @@
             z-index: 1000;
             transition: all 0.3s ease;
         }
-        .nav { display: flex; justify-content: space-between; align-items: center; }
+        .nav { display: flex; justify-content: space-between; align-items: center; position: relative; }
         
         .logo { font-family: 'Montserrat', sans-serif; color: #fff; font-weight: 800; font-size: 1.2rem; z-index: 1002; position: relative;}
         .logo img {
@@ -252,7 +251,7 @@
             transform: scale(1.1); 
         }
 
-        /* CARD PARCEIRO - GAC (REDUZIDO E COMPACTO) */
+        /* CARD PARCEIRO - GAC */
         .promo-gac {
             background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop') center/cover;
             position: relative;
@@ -269,14 +268,14 @@
         .promo-content {
             position: relative;
             z-index: 1;
-            padding: 60px 50px; /* Reduzido o padding geral */
+            padding: 60px 50px;
             max-width: 800px;
         }
         
         .gac-logo-banner {
-            max-width: 180px; /* Logo da GAC reduzida */
+            max-width: 180px;
             height: auto;
-            margin-bottom: 20px; /* Margem reduzida */
+            margin-bottom: 20px;
             display: block;
         }
 
@@ -289,16 +288,16 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             display: inline-block;
-            margin-bottom: 15px; /* Margem reduzida */
+            margin-bottom: 15px; 
         }
-        .promo-content h3 { font-size: 2rem; margin-bottom: 15px; color: #fff; } /* Fonte e margem reduzidas */
-        .promo-content p { font-size: 1rem; color: #e2e8f0; margin-bottom: 25px; line-height: 1.6; } /* Fonte reduzida */
+        .promo-content h3 { font-size: 2rem; margin-bottom: 15px; color: #fff; } 
+        .promo-content p { font-size: 1rem; color: #e2e8f0; margin-bottom: 25px; line-height: 1.6; }
         .btn-gac {
             display: inline-flex;
             align-items: center;
             background: #fff;
             color: #0f172a;
-            padding: 14px 28px; /* Botão reduzido */
+            padding: 14px 28px;
             border-radius: 30px;
             font-weight: 800;
             text-transform: uppercase;
@@ -324,52 +323,61 @@
            ========================================== */
         @media (max-width: 992px) {
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 3rem; }
         }
 
-@media (max-width: 768px) {
+        @media (max-width: 768px) {
+            section { padding: 50px 0; }
+            
             .ticker-wrap { 
-                padding: 2px 0; /* REDUZIDO */
-                font-size: 0.60rem; /* FONTE BEM PEQUENA PARA CELULAR */
+                padding: 2px 0;
+                font-size: 0.60rem; 
                 border-bottom-width: 1px;
-                height: 18px; /* ALTURA SUPER FINA */
+                height: 18px; 
             }
             .ticker-item { margin-right: 30px; }
 
             .header { 
-                top: 18px; /* AJUSTADO: acompanha a altura do ticker no celular */
+                top: 18px; 
                 padding: 10px 0; 
             }
-            /* .
+            
+            /* ERRO DE SINTAXE REMOVIDO AQUI: o '/* .' sumiu! */
             .logo img { max-height: 40px; } 
 
             .hamburger { display: flex; }
             .desktop-only { display: none; }
-            .mobile-only { display: block; margin-top: 20px; width: 100%; }
+            .mobile-only { display: block; width: 100%; text-align: center; }
             
             .nav-menu {
                 position: absolute;
-                top: -450px; 
+                top: 100%; /* Fica logo abaixo do header */
                 left: 0;
                 width: 100%;
                 background: var(--header-bg);
                 flex-direction: column;
                 align-items: center;
-                padding: 100px 20px 30px 20px;
+                padding: 30px 20px;
                 gap: 20px;
                 transition: 0.4s ease-in-out;
-                z-index: 1001;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.5);
                 opacity: 0;
+                pointer-events: none; /* Evita cliques quando invisível */
+                transform: translateY(-20px);
             }
             
-            .nav-menu.active { top: 0; opacity: 1; }
+            .nav-menu.active { 
+                opacity: 1; 
+                pointer-events: auto;
+                transform: translateY(0);
+            }
 
             .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
             .hamburger.active span:nth-child(2) { opacity: 0; }
             .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-            .hero { padding-top: 140px; } 
-            .hero h1 { font-size: 2.5rem; }
+            .hero { padding-top: 120px; padding-bottom: 40px;} 
+            .hero h1 { font-size: 2.2rem; }
             .hero-subtitle { font-size: 1rem; margin-bottom: 30px; }
             
             .hero-actions { 
@@ -378,12 +386,12 @@
                 align-items: center; 
             }
             .hero-actions .btn {
-                width: 85%; 
+                width: 100%; 
                 max-width: 280px; 
-                padding: 12px 20px; 
             }
             
-            .section-header h2 { font-size: 2.2rem; }
+            .section-header { margin-bottom: 40px; }
+            .section-header h2 { font-size: 2rem; }
             
             .stats-grid { grid-template-columns: 1fr 1fr; padding: 30px 20px; gap: 20px; }
             .stat-number { font-size: 2.5rem; }
@@ -392,16 +400,20 @@
             
             .gallery-grid { grid-template-columns: 1fr; } 
             
-            /* BANNER GAC CELULAR - AINDA MAIS COMPACTO */
-            .promo-content { padding: 35px 25px; } /* Padding reduzido drasticamente no celular */
-            .gac-logo-banner { max-width: 140px; margin-bottom: 15px; } /* Logo ainda menor */
-            .promo-content h3 { font-size: 1.5rem; margin-bottom: 10px; } /* Texto menor */
+            /* BANNER GAC CELULAR */
+            .promo-gac::before {
+                background: linear-gradient(to bottom, rgba(15,23,42,0.95) 30%, rgba(15,23,42,0.6) 100%);
+            }
+            .promo-content { padding: 40px 20px; text-align: center; }
+            .gac-logo-banner { max-width: 140px; margin: 0 auto 15px auto; } 
+            .promo-content h3 { font-size: 1.5rem; margin-bottom: 10px; } 
             .promo-content p { font-size: 0.95rem; margin-bottom: 20px; }
-            .btn-gac { font-size: 0.8rem; padding: 12px 20px; text-align: center; }
+            .btn-gac { font-size: 0.8rem; padding: 12px 20px; width: 100%; justify-content: center;}
         }
 
         @media (max-width: 480px) {
             .stats-grid { grid-template-columns: 1fr; } 
+            .hero h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -433,7 +445,7 @@
                 <li class="mobile-only"><a href="https://www.nxsistemas.com/ferreiraebrito" class="btn btn-portal" target="_blank">Portal do Cliente</a></li>
             </ul>
 
-            <div style="display: flex; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 15px;">
                 <a href="https://www.nxsistemas.com/ferreiraebrito" class="btn btn-portal desktop-only" target="_blank">Portal do Cliente</a>
                 
                 <div class="hamburger" id="hamburger">
@@ -446,7 +458,7 @@
     </header>
 
     <main>
-<section id="inicio" class="hero">
+        <section id="inicio" class="hero">
             <div class="hero-content reveal">
                 <h1>Logística Inteligente que<br><span>Agrega Valor ao seu Negócio</span></h1>
                 <p class="hero-subtitle">Especialistas absolutos em armazenamento de grãos e fertilizantes. Infraestrutura de ponta e processos rigorosos para potencializar o seu negócio.</p>
@@ -566,6 +578,7 @@
     </footer>
 
     <script>
+        // Funcionalidade do Menu Hambúrguer
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -582,6 +595,7 @@
             });
         });
 
+        // Consumo de APIs - Dados de Mercado
         async function buscarDadosMercado() {
             try {
                 const resMoedas = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL');
@@ -628,6 +642,7 @@
         
         buscarDadosMercado();
 
+        // Animação de Scroll
         function revealOnScroll() {
             const reveals = document.querySelectorAll('.reveal');
             for (let i = 0; i < reveals.length; i++) {
